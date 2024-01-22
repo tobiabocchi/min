@@ -28,7 +28,7 @@ const defaultViewWebPreferences = {
 
 function createView (existingViewId, id, webPreferencesString, boundsString, events) {
   if (viewStateMap[id]) {
-    console.warn("Creating duplicate view")
+    console.warn('Creating duplicate view')
   }
   viewStateMap[id] = { loadedInitialURL: false }
 
@@ -51,7 +51,7 @@ function createView (existingViewId, id, webPreferencesString, boundsString, eve
       const eventTarget = BrowserWindow.fromBrowserView(view) || windows.getCurrent()
 
       if (!eventTarget) {
-        //this can happen during shutdown - windows can be destroyed before the corresponding views, and the view can emit an event during that time
+        // this can happen during shutdown - windows can be destroyed before the corresponding views, and the view can emit an event during that time
         return
       }
 
@@ -320,7 +320,7 @@ ipc.on('loadURLInView', function (e, args) {
   // wait until the first URL is loaded to set the background color so that new tabs can use a custom background
   if (!viewStateMap[args.id].loadedInitialURL) {
     // Give the site a chance to display something before setting the background, in case it has its own dark theme
-    viewMap[args.id].webContents.once('dom-ready', function() {
+    viewMap[args.id].webContents.once('dom-ready', function () {
       viewMap[args.id].setBackgroundColor('#fff')
     })
     // If the view has no URL, it won't be attached yet

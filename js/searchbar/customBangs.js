@@ -274,7 +274,7 @@ function initialize () {
       setTimeout(function () {
         browserUI.addTask()
         if (text) {
-          tasks.update(tasks.getSelected().id, {name: text})
+          tasks.update(tasks.getSelected().id, { name: text })
         }
       }, 600)
     }
@@ -311,7 +311,7 @@ function initialize () {
     snippet: l('nameTask'),
     isAction: false,
     fn: function (text) {
-      tasks.update(tasks.getSelected().id, {name: text})
+      tasks.update(tasks.getSelected().id, { name: text })
     }
   })
 
